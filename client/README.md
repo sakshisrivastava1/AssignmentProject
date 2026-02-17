@@ -1,198 +1,71 @@
-# 🛒 Product Management Application (MERN Stack)
-
-A full-stack Product Management application built using the MERN stack.  
-This application implements authentication, role-based authorization, and CRUD operations for products.
-
----
-
-## 📌 Project Overview
-
-This project allows users and admins to interact with products based on their roles.
-
-- Users can:
-  - Sign up / Login
-  - View all products
-  - Logout
-
-- Admins can:
-  - Login
-  - View all products
-  - Add new products
-  - Edit existing products
-  - Delete products
-  - Logout
-
-The application uses JWT authentication and role-based access control to manage permissions.
-
----
-
-## 🚀 Tech Stack
-
-### Frontend
-- React.js (Vite)
-- React Router DOM
-- Axios
-- CSS
+Authentication APIs
+Method	      Endpoint	               Description	Access
+POST	   /api/v1/auth/signup	     Register a new user (Public)
+POST	   /api/v1/auth/login	     Login user & receive JWT (Public)
+GET	     /api/v1/auth/logout	    To Logout current user(Protected)
 
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JWT (Authentication)
-- Cloudinary (Image Upload)
+Product APIs
+Method	   Endpoint	                      Description	Access
+POST	    /api/v1/product/add	          Add new product	Admin only
+PUT	      /api/v1/product/update/:id	  Update product	Admin only
+GET	     /api/v1/product/getAll	       Get all products	User/Admin
+DELETE	  /api/v1/product/remove/:id	  Delete product	Admin only
+GET	     /api/v1/product/getById/:id	 Get product by Id User/Admin
 
----
+User API
+Method	   Endpoint	                  Description	Access
+GET	     /api/v1/user/current	  Get current logged-in user(protected)
 
-## 📂 Folder Structure
+Scalability & Architecture Considerations ---
 
-### Frontend (Client)
+This application currently follows a monolithic architecture using Node.js and Express. To scale this system for production-level traffic, the following improvements can be implemented:
 
-client/
-├── src/
-│ ├── pages/
-│ │ ├── Login.jsx
-│ │ ├── Signup.jsx
-│ │ ├── Products.jsx
-│ │ ├── CreateProduct.jsx
-│ │ ├── EditProduct.jsx
-│ │
-│ ├── components/
-│ │ ├── Navbar.jsx
-│ │ ├── ProductCard.jsx
-│ │
-│ ├── context/
-│ │ ├── AuthContext.jsx
-│ │
-│ ├── App.jsx
-│ └── main.jsx
+1️⃣ Microservices Architecture
 
-### Backend 
-backend/
-├── controllers/
-│ ├── productController.js
-│ ├── userController.js
-│
-├── models/
-│ ├── productModel.js
-│ ├── userModel.js
-│
-├── routes/
-│ ├── productRoutes.js
-│ ├── userRoutes.js
-│
-├── middleware/
-│ ├── authMiddleware.js
-│
-└── index.js
+Separate services such as:
 
+Authentication Service
+Product Service
+Image Upload Service
+This allows independent scaling and better fault isolation.
 
----
+2️⃣ Caching with Redis
 
-## Features
+Frequently accessed product listings can be cached using Redis to:
 
-### User Role
-- Register and login
-- View all products
-- Logout functionality
+Reduce database load
+Improve response time
+Handle high read traffic efficiently
 
-### Admin Role
-- Add new product
-- Edit product
-- Delete product
-- View all products
-- Logout functionality
+3️⃣ Load Balancing
 
----
+Deploy multiple backend instances behind:
+NGINX
+AWS ELB
+This distributes incoming traffic evenly and improves availability.
 
-## ⚙️ Installation & Setup Guide
+4️⃣ Database Optimization
 
-### 1️⃣ Clone the Repository
+Add indexing on frequently queried fields (e.g., product name, category).
 
-```bash
-git clone <your-repository-link>
-cd project-folder
+Use connection pooling.
 
-2️⃣ Backend Setup
+Implement pagination for large datasets.
 
-Navigate to the backend folder:
+5️⃣ Containerization & Orchestration
 
-cd backend
-npm install
+Use Docker to containerize the app and Kubernetes for:
 
+Auto-scaling
 
-Create a .env file inside the server directory and add:
+Self-healing deployments
 
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-CLOUDINARY_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_SECRET_KEY=your_cloudinary_secret_key
+Efficient resource utilization
 
+6️⃣ Security & Rate Limiting
 
-Start the backend server:
+Implement rate limiting using express-rate-limit.
 
-npm start
+Use Helmet for secure HTTP headers.
 
-Frontend Setup:
-
-Navigate to the client folder:
-
-cd client
-npm install
-npm run dev
-
-
-Frontend will run at:
-
-http://localhost:5173
-
-
-Backend will run at:
-
-http://localhost:3000
-
-🔐 Authentication Flow
-
-User logs in with email and password
-
-JWT token is generated
-
-Token is stored in localStorage
-
-Protected routes verify the token
-
-Admin access is granted based on user role
-
-Product Image Upload
-
-Images are uploaded using Cloudinary
-
-Image URL is stored in MongoDB
-
-Products are displayed with their uploaded image
-
-API Endpoints (Sample)
-User Routes
-
-GET /api/v1/user/current
-
-Auth Routes
-
-POST /api/v1/user/signup
-
-POST /api/v1/user/login
-
-Product Routes
-
-GET /api/v1/product/getAll
-
-POST /api/v1/product/add (Admin only)
-
-PUT /api/v1/product/update/:id (Admin only)
-
-DELETE /api/v1/product/remove/:id (Admin only)
-
-
-
+Store secrets securely using environment variables.

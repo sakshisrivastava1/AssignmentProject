@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { serverUrl } from "../App";
-import toast from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
+import { toast } from "react-hot-toast";
+import { serverUrl } from "../App";
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -13,24 +13,25 @@ const EditProduct = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("Men");
   const [price, setPrice] = useState("");
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(
-          serverUrl + `/api/v1/product/getById/${id}`,
-          { withCredentials: true }
-        );
-        const product = res.data.product || res.data;
+        const res = await axios.get(serverUrl + `/api/v1/product/getById/${id}`,{ withCredentials: true });
+
+        const product = res.data.product;
 
         setName(product.name);
         setDescription(product.description);
         setCategory(product.category);
         setPrice(product.price);
+        setPreview(product.image);
+
       } catch (error) {
-        console.log(error)
+        console.log(error);
         toast.error("Failed to load product");
       }
     };
@@ -38,25 +39,31 @@ const EditProduct = () => {
     fetchProduct();
   }, [id]);
 
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     setLoading(true);
-
     try {
-      await axios.put(
-        serverUrl + `/api/v1/product/update/${id}`,
-        { name, description, price, category },
-        { withCredentials: true }
-      );
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("category", category);
 
-      toast.success("Product Updated!");
+      if (image) {
+        formData.append("image", image);
+      }
+
+      const response = await axios.put(serverUrl + `/api/v1/product/update/${id}`,formData,{ withCredentials: true });
+      setLoading(false);
+      console.log(response.data)
+      toast.success("Product Updated Successfully!");
       navigate("/");
     } catch (error) {
-      console.log(error)
+      setLoading(false);
+      console.log(error);
       toast.error("Failed to update product");
     }
-    
-    setLoading(false);
   };
 
   return (
@@ -81,7 +88,7 @@ const EditProduct = () => {
         </div>
 
         <div>
-          <p className="mb-2 font-semibold">Product Description</p>
+          <p className="mb-2 font-semibold">Description</p>
           <textarea
             className="w-full h-24 rounded-lg bg-slate-600 px-4 py-2"
             value={description}
@@ -111,6 +118,26 @@ const EditProduct = () => {
             onChange={(e) => setPrice(e.target.value)}
             required
           />
+        </div>
+
+        <div>
+          <p className="mb-2 font-semibold">Product Image</p>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+              setPreview(URL.createObjectURL(e.target.files[0]));
+            }}
+          />
+
+          {preview && (
+            <img
+              src={preview}
+              alt="Preview"
+              className="mt-4 h-32 rounded-lg object-cover"
+            />
+          )}
         </div>
 
         <button

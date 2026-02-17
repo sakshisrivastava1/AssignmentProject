@@ -7,8 +7,8 @@ import { authRole } from '../middlewares/authRole.js'
 
 const router = express.Router()
 
-router.get('/getAll',getAllProducts)
-router.get("/getById/:id", getProductById);
+router.get('/getAll',isAuth,getAllProducts)
+router.get("/getById/:id",isAuth,getProductById);
 
 router.post('/add',
     upload.single('image'),
@@ -17,7 +17,7 @@ router.post('/add',
     authRole('admin'),
     addProduct) 
 
-router.put("/update/:id", isAuth,authRole('admin'), updateProduct);
+router.put("/update/:id",upload.single('image'), isAuth,authRole('admin'), updateProduct);
 router.delete('/remove/:id',isAuth,authRole('admin'),removeProduct)
 
 export default router 
