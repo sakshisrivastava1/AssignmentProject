@@ -159,6 +159,7 @@ Implement unit and integration tests for backend
 
 Add more advanced error handling
 
+
 Scalability & Architecture Considerations
 
 This application currently follows a monolithic architecture. For production-level traffic, the following improvements can be implemented:
@@ -202,6 +203,25 @@ Implement rate limiting using express-rate-limit
 Use Helmet for secure HTTP headers
 
 Store secrets securely using environment variables
+
+## API Test Screenshots
+The following screenshots demonstrate successful execution of all backend APIs:
+
+### Authentication
+- **Signup:** ![Signup](log files/signup_Screenshot.png)
+- **Login:** ![Login](log files/login_Screenshot.png)
+- **Logout:** ![Logout](log files/logout_Screenshot.png)
+
+### User
+- **Get Current User:** ![Current User](log files/getCurrentUser_Screenshot.png)
+
+### Products
+- **Get All Products:** ![Get All](logs/getAll_Screenshot.png)
+- **Get Product by ID:** ![Get By ID](logs/getById_Screenshot.png)
+- **Add Product:** ![Add Product](logs/addproduct_Screenshot.png)
+- **Update Product:** ![Update Product](logs/updateproduct_Screenshot.png)
+- **Remove Product:** ![Remove Product](logs/removeproduct_Screenshot.png)
+
 
 License
 
