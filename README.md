@@ -7,7 +7,8 @@ The frontend was a minimal React interface used only to test API functionality. 
 
 Features:
 
-Backend
+Backend :
+
 User Authentication
 Sign up and login functionality
 Password hashing with bcrypt
@@ -15,18 +16,21 @@ JWT-based authentication
 
 Role-based access: admin vs user
 
-Product Management
+Product Management:
+
 Admin can create, edit, and delete products
 Admin and users can get products and get product bt id too
 Supports image uploads using Multer
 Products stored in MongoDB
 
-API
+API:
+
 Fully RESTful
 Middlewares for authentication and authorization
 Error handling and validation for requests
 
-Frontend (For Testing Only)
+Frontend (For Testing Only) :
+
 Built with React.js
 Simple interface to test backend APIs
 
@@ -37,7 +41,7 @@ User login and signup
 
 State management using React hooks and Redux
 
-Tech Stack
+Tech Stack :
 
 Backend: Node.js, Express.js
 Database: MongoDB (via Mongoose)
@@ -61,18 +65,19 @@ root
 │   └─ src/redux        # Minimal state management
 └─ README.md
 
-API Endpoints
-Auth
+API Endpoints:
+
+Auth:
 Method	       Endpoint	            Description
 POST	   /api/v1/auth/signup	   Register a new user
 POST	   /api/v1/auth/login	     Login user and return JWT
 GET	     /api/v1/auth/logout     Logout user (protected)
 
-User
+User:
 Method	  Endpoint	              Description
 GET	    /api/v1/user/current	  Get current logged-in user(protected)
 
-Products
+Products:
 Method	          Endpoint	                 Description
 GET	      /api/v1/product/getAll	        Get all products
 GET	      /api/v1/product/getById/:id	    Get product by ID
@@ -80,7 +85,7 @@ POST	    /api/v1/product/add             Add a new product (admin only)
 PUT	      /api/v1/product/update/:id	    Update a product (admin only)
 DELETE	  /api/v1/product/remove/:id	    Delete a product (admin only)
 
-Installation & Setup
+Installation & Setup :
 
 Backend :
 
@@ -126,16 +131,16 @@ npm start
 Frontend runs on http://localhost:5173
 Backend runs on http://localhost:3000
 
-Postman Collection
+Postman Collection:
 A Postman collection is included for testing all backend APIs:
 Auth: Signup/Login
 User: Get logged-in user
 Product CRUD operations
 
-Future Improvements
+Future Improvements:
 Add pagination and filtering for products
 Implement unit and integration tests for backend
 Add more advanced error handling
 
-License
+License:
 This project is open-source under MIT License.
