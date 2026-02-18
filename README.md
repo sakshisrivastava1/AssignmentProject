@@ -208,12 +208,12 @@ Store secrets securely using environment variables
 The following screenshots demonstrate successful execution of all backend APIs:
 
 ### Authentication
-- **Signup:** ![Signup](log files/signup_Screenshot.png)
-- **Login:** ![Login](log files/login_Screenshot.png)
-- **Logout:** ![Logout](log files/logout_Screenshot.png)
+- **Signup:** ![Signup](logs/signup_Screenshot.png)
+- **Login:** ![Login](logs/login_Screenshot.png)
+- **Logout:** ![Logout](logs/logout_Screenshot.png)
 
 ### User
-- **Get Current User:** ![Current User](log files/getCurrentUser_Screenshot.png)
+- **Get Current User:** ![Current User](logs/getCurrentUser_Screenshot.png)
 
 ### Products
 - **Get All Products:** ![Get All](logs/getAll_Screenshot.png)
