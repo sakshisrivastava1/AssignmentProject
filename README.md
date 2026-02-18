@@ -102,12 +102,18 @@ bash
 npm install
 
 Create a .env file:
+
 PORT=3000
+
 MONGO_URI=<your-mongodb-connection-string>
+
 JWT_SECRET=<your-secret-key>
+
 CLOUDINARY_NAME=<your-cloudinary-name>
-CLOUDINARY_API_KEY=<your-api-key>
-CLOUDINARY_API_SECRET=<your-api-secret>
+
+CLOUDINARY_API_KEY=<your-cloudinary-api-key>
+
+CLOUDINARY_API_SECRET=<your-cloudinary-api-secret>
 
 Start the server:
 bash
@@ -132,15 +138,23 @@ Frontend runs on http://localhost:5173
 Backend runs on http://localhost:3000
 
 Postman Collection:
+
 A Postman collection is included for testing all backend APIs:
+
 Auth: Signup/Login
+
 User: Get logged-in user
+
 Product CRUD operations
 
 Future Improvements:
+
 Add pagination and filtering for products
+
 Implement unit and integration tests for backend
+
 Add more advanced error handling
 
 License:
+
 This project is open-source under MIT License.
