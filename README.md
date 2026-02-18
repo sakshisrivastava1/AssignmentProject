@@ -216,11 +216,11 @@ The following screenshots demonstrate successful execution of all backend APIs:
 - **Get Current User:** ![Current User](log files/getCurrentUser_Screenshot.png)
 
 ### Products
-- **Get All Products:** ![Get All](log files/getAll_Screenshot.png)
-- **Get Product by ID:** ![Get By ID](log files/getById_Screenshot.png)
-- **Add Product:** ![Add Product](log files/addproduct_Screenshot.png)
-- **Update Product:** ![Update Product](log files/updateproduct_Screenshot.png)
-- **Remove Product:** ![Remove Product](log files/removeproduct_Screenshot.png)
+- **Get All Products:** ![Get All](logs/getAll_Screenshot.png)
+- **Get Product by ID:** ![Get By ID](logs/getById_Screenshot.png)
+- **Add Product:** ![Add Product](logs/addproduct_Screenshot.png)
+- **Update Product:** ![Update Product](logs/updateproduct_Screenshot.png)
+- **Remove Product:** ![Remove Product](logs/removeproduct_Screenshot.png)
 
 
 License
