@@ -1,0 +1,375 @@
+{
+  "info": {
+    "_postman_id": "ae94b5f3-93cf-4a70-a423-59056229a02a",
+    "name": "Backend Assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "AUTH",
+      "item": [
+        {
+          "name": "SIGNUP",
+          "id": "74d150a1-57d4-41dd-b43f-e9d81ff8a4d7",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Aksh Singh\",\r\n    \"email\": \"aksh@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/auth/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "LOGIN",
+          "id": "658a9ab2-660b-4f10-87f7-e775bffca912",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"rohit@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "LOGOUT",
+          "id": "c233e126-e005-4900-872a-49e30051b9cf",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/auth/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "bc79ba09-7dc1-49dd-9b14-20943a0ca541"
+    },
+    {
+      "name": "USER",
+      "item": [
+        {
+          "name": "GET CURRENT USER",
+          "id": "73a9f648-f9f1-42ad-ac99-dc0fe54b35a1",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/current",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "current"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "060f989e-0cb0-47a1-82b4-95b011c98ad0"
+    },
+    {
+      "name": "PRODUCT",
+      "item": [
+        {
+          "name": "GET ALL PRODUCTS",
+          "id": "6f28138b-aa5d-4b82-9a05-2a98c852c120",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/product/getAll",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "product",
+                "getAll"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET BY ID",
+          "id": "e4b045ec-01a9-4711-beb0-ba9867be3911",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/product/getById/6994c673ecce644323a5d931",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "product",
+                "getById",
+                "6994c673ecce644323a5d931"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ADD PRODUCT",
+          "id": "411404a4-bd0a-435c-9a8e-4024bf45452b",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Women Top",
+                  "type": "text",
+                  "uuid": "d41bb2d3-fd8c-472b-a624-0029016e4d21"
+                },
+                {
+                  "key": "description",
+                  "value": "Women Stylish Top",
+                  "type": "text",
+                  "uuid": "d9cd4677-4118-485f-9fae-eb11597820c9"
+                },
+                {
+                  "key": "price",
+                  "value": "400",
+                  "type": "text",
+                  "uuid": "48962594-0ed1-4f58-9193-ce3590edcfea"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "f01599df-2af3-445d-9f2c-d67be99f3e9a",
+                  "src": [
+                    "/C:/Users/saksh_pjmh6do/OneDrive/Desktop/Forever.com/frontendd/src/assets/p_img5.png"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/product/add",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "product",
+                "add"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE PRODUCT",
+          "id": "30c4adde-b951-4eca-a8fd-c5db895286f5",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "price",
+                  "value": "800",
+                  "type": "text",
+                  "uuid": "20b6c094-208e-4d7d-ae74-92b67c9ba8e9"
+                }
+              ],
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/product/update/6994adfdcce7ee6dfc6cc984",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "product",
+                "update",
+                "6994adfdcce7ee6dfc6cc984"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "REMOVE PRODUCT",
+          "id": "2b86ea9b-4e28-4ae2-84c1-14c9d8a2d3ad",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/product/remove/69955d32c79f5535245d8295",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "product",
+                "remove",
+                "69955d32c79f5535245d8295"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "f5af3cbd-2728-4b6f-9290-c581116a6ba0"
+    }
+  ]
+}
